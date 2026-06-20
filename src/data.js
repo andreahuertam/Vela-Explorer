@@ -369,6 +369,204 @@ export const TOURISM_DATA = {
       }
     }
   }
+  ,
+  mexico: {
+    name: "México",
+    flag: "🇲🇽",
+    description: "Riqueza histórica, sabores vibrantes y paisajes que van desde ruinas prehispánicas hasta playas caribeñas.",
+    cities: {
+      ciudad_de_mexico: {
+        name: "Ciudad de México",
+        description: "Una metrópolis cultural con museos de clase mundial, barrios bohemios y una escena gastronómica única.",
+        coords: [19.4326, -99.1332],
+        tours: [
+          {
+            name: "Recorrido por el Centro Histórico y Museo Nacional de Antropología",
+            description: "Visita la Catedral, el Zócalo y explora siglos de historia en el museo más importante de México.",
+            duration: "3 horas",
+            price: "MX$600",
+            rating: 4.8,
+            image: "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=600&q=80"
+          },
+          {
+            name: "Tour Gastronómico: Tacos y Mercados",
+            description: "Prueba tacos tradicionales, antojitos y conoce mercados emblemáticos como la Merced o Coyoacán.",
+            duration: "3 horas",
+            price: "MX$550",
+            rating: 4.9,
+            image: "https://images.unsplash.com/photo-1544025162-1d6a1a9f7b1e?auto=format&fit=crop&w=600&q=80"
+          },
+          {
+            name: "Teotihuacán y Paseo en Globo",
+            description: "Sube en globo sobre las pirámides y completa la visita guiada por las impresionantes estructuras prehispánicas.",
+            duration: "6 horas",
+            price: "MX$2200",
+            rating: 4.9,
+            image: "https://images.unsplash.com/photo-1526403224731-2f9b2b1f1b6b?auto=format&fit=crop&w=600&q=80"
+          }
+        ],
+        restaurants: [
+          { name: "Pujol", cuisine: "Alta Cocina Mexicana", price: "MX$MX$€€€", rating: 4.9, coords: [19.4329, -99.1967], description: "Innovadora cocina mexicana del chef Enrique Olvera." },
+          { name: "Contramar", cuisine: "Mariscos", price: "MX$€€", rating: 4.8, coords: [19.4196, -99.1744], description: "Famoso por su pescado a la talla y ambiente costero en CDMX." },
+          { name: "El Huequito", cuisine: "Tacos", price: "MX$", rating: 4.6, coords: [19.4285, -99.1272], description: "Tacos al pastor tradicionales y rápidos." }
+        ]
+      }
+    }
+  },
+  alemania: {
+    name: "Alemania",
+    flag: "🇩🇪",
+    description: "Histórica, moderna y repleta de museos, música y arquitectura diversa.",
+    cities: {
+      berlin: {
+        name: "Berlín",
+        description: "Capital cultural y creativa, con una intensa historia y vida nocturna vibrante.",
+        coords: [52.52, 13.4050],
+        tours: [
+          { name: "Puerta de Brandenburgo y Reichstag", description: "Paseo histórico por los monumentos más simbólicos de Berlín.", duration: "2 horas", price: "€35", rating: 4.8, image: "https://images.unsplash.com/photo-1508050919630-b135583b29d4?auto=format&fit=crop&w=600&q=80" },
+          { name: "Isla de los Museos (Museumsinsel)", description: "Visita Pergamon y el Altes Museum con un guía experto.", duration: "3 horas", price: "€45", rating: 4.9, image: "https://images.unsplash.com/photo-1505577058444-a3dab1e48f86?auto=format&fit=crop&w=600&q=80" },
+          { name: "Ruta de Street Art y Kreuzberg", description: "Explora el arte urbano y la escena alternativa berlinesa.", duration: "2.5 horas", price: "€30", rating: 4.7, image: "https://images.unsplash.com/photo-1504198453319-5ce911bafcde?auto=format&fit=crop&w=600&q=80" }
+        ],
+        restaurants: [
+          { name: "Restaurant Tim Raue", cuisine: "Alta Cocina Alemana / Asiática", price: "€€€€", rating: 4.9, coords: [52.5025, 13.3789], description: "Alta cocina contemporánea con influencias asiáticas." },
+          { name: "Mustafá's Gemüse Kebab", cuisine: "Street Food", price: "€", rating: 4.6, coords: [52.5076, 13.3862], description: "Kebab legendario entre locales y turistas." },
+          { name: "Curry 36", cuisine: "Fast Food Alemán", price: "€", rating: 4.4, coords: [52.4996, 13.4036], description: "Currywurst icónica de Berlín." }
+        ]
+      }
+    }
+  },
+  colombia: {
+    name: "Colombia",
+    flag: "🇨🇴",
+    description: "Paisajes diversos desde playas caribeñas hasta montañas andinas y cultura vibrante.",
+    cities: {
+      cartagena: {
+        name: "Cartagena",
+        description: "Ciudad amurallada con encanto colonial, playas y vida nocturna caribeña.",
+        coords: [10.3910, -75.4794],
+        tours: [
+          { name: "Paseo por la Ciudad Amurallada", description: "Recorre plazas, murallas y fortalezas históricas con guía local.", duration: "2 horas", price: "$60", rating: 4.8, image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=80" },
+          { name: "Islas del Rosario y Playa Blanca", description: "Excursión de día a islas cristalinas y snorkel.", duration: "8 horas", price: "$80", rating: 4.9, image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=600&q=80" },
+          { name: "Tour Gastronómico y Café Local", description: "Degusta platos costeños y conoce pequeños productores de café.", duration: "3 horas", price: "$45", rating: 4.7, image: "https://images.unsplash.com/photo-1505751172876-fa1923c5c528?auto=format&fit=crop&w=600&q=80" }
+        ],
+        restaurants: [
+          { name: "Carmen Cartagena", cuisine: "Fusión", price: "$€€", rating: 4.8, coords: [10.4231, -75.5359], description: "Alta cocina de autor con ingredientes locales." },
+          { name: "La Mulata", cuisine: "Costeña", price: "$", rating: 4.6, coords: [10.4235, -75.5432], description: "Sabores auténticos de la costa caribeña." },
+          { name: "Restaurante 1621", cuisine: "Gourmet", price: "$€€€", rating: 4.7, coords: [10.4239, -75.5437], description: "Ubicado en un hotel boutique dentro de la ciudad amurallada." }
+        ]
+      }
+    }
+  },
+  argentina: {
+    name: "Argentina",
+    flag: "🇦🇷",
+    description: "Tierra de paisajes contrastantes, cultura gauchesca, tango y una reconocida tradición gastronómica.",
+    cities: {
+      buenos_aires: {
+        name: "Buenos Aires",
+        description: "Capital cosmopolita famosa por el tango, barrios históricos y una intensa vida cultural.",
+        coords: [-34.6037, -58.3816],
+        tours: [
+          { name: "Show de Tango y Barrio de La Boca", description: "Experiencia cultural con show de tango y paseo por las coloridas calles.", duration: "3 horas", price: "$45", rating: 4.8, image: "https://images.unsplash.com/photo-1519999482648-25049ddd37b1?auto=format&fit=crop&w=600&q=80" },
+          { name: "Estancia y Experiencia Gaucha", description: "Un día en el campo con demostraciones de doma y asado tradicional.", duration: "8 horas", price: "$120", rating: 4.9, image: "https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=600&q=80" },
+          { name: "Tour Gastronómico de Parrillas", description: "Degustación de cortes y vinos locales en parrillas históricas.", duration: "3 horas", price: "$60", rating: 4.7, image: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=600&q=80" }
+        ],
+        restaurants: [
+          { name: "Don Julio", cuisine: "Parrilla", price: "$€€", rating: 4.9, coords: [-34.5901, -58.4233], description: "Parrilla de renombre con cortes clásicos argentinos." },
+          { name: "Tegui", cuisine: "Alta Cocina", price: "$€€€€", rating: 4.8, coords: [-34.5933, -58.4442], description: "Menú de degustación contemporáneo en Palermo." },
+          { name: "La Cabrera", cuisine: "Parrilla", price: "$€€", rating: 4.7, coords: [-34.5867, -58.4301], description: "Parrilla popular entre locales y visitantes." }
+        ]
+      }
+    }
+  },
+  brasil: {
+    name: "Brasil",
+    flag: "🇧🇷",
+    description: "Playas icónicas, música contagiosa y naturaleza exuberante.",
+    cities: {
+      rio: {
+        name: "Río de Janeiro",
+        description: "Ciudad de playas, samba y vistas impresionantes desde sus montañas.",
+        coords: [-22.9068, -43.1729],
+        tours: [
+          { name: "Cristo Redentor y Pan de Azúcar", description: "Iconos de Río con vistas panorámicas y teleférico.", duration: "4 horas", price: "R$180", rating: 4.9, image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=80" },
+          { name: "Playas de Ipanema y Copacabana", description: "Paseo guiado por las playas más famosas y sus kioscos.", duration: "2 horas", price: "R$60", rating: 4.7, image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=600&q=80" },
+          { name: "Favela Tour Cultural", description: "Visita responsable con guía local para comprender la vida en comunidades urbanas.", duration: "3 horas", price: "R$80", rating: 4.6, image: "https://images.unsplash.com/photo-1495231916356-a86217efff12?auto=format&fit=crop&w=600&q=80" }
+        ],
+        restaurants: [
+          { name: "Aprazível", cuisine: "Brasileña Contemporánea", price: "R$R$€€", rating: 4.8, coords: [-22.9496, -43.1876], description: "Restaurante con vistas y cocina basada en ingredientes brasileños." },
+          { name: "Churrascaria Palace", cuisine: "Churrasco", price: "R$€€", rating: 4.5, coords: [-22.9056, -43.1797], description: "Clásica experiencia de carnes a la parrilla." },
+          { name: "Confeitaria Colombo", cuisine: "Cafetería Histórica", price: "R$", rating: 4.6, coords: [-22.9070, -43.1726], description: "Pastelería y café tradicional con historia." }
+        ]
+      }
+    }
+  },
+  portugal: {
+    name: "Portugal",
+    flag: "🇵🇹",
+    description: "Cultura marítima, ciudades históricas y costas impresionantes.",
+    cities: {
+      lisboa: {
+        name: "Lisboa",
+        description: "Capital llena de colinas, tranvías y barrios con encanto como Alfama y Bairro Alto.",
+        coords: [38.7223, -9.1393],
+        tours: [
+          { name: "Tram 28 y Alfama", description: "Recorrido clásico por los barrios más tradicionales de Lisboa.", duration: "2 horas", price: "€30", rating: 4.8, image: "https://images.unsplash.com/photo-1505765056433-0d7a6f3b6f6f?auto=format&fit=crop&w=600&q=80" },
+          { name: "Excursión a Sintra", description: "Visita palacios románticos y jardines de ensueño en un día.", duration: "7 horas", price: "€65", rating: 4.9, image: "https://images.unsplash.com/photo-1507874457470-272b3c8d8ee2?auto=format&fit=crop&w=600&q=80" },
+          { name: "Noche de Fado y Gastronomía", description: "Cena con espectáculo de fado en un local tradicional.", duration: "3 horas", price: "€50", rating: 4.8, image: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=600&q=80" }
+        ],
+        restaurants: [
+          { name: "Belcanto", cuisine: "Alta Cocina Portuguesa", price: "€€€€", rating: 4.9, coords: [38.7071, -9.1399], description: "Chef José Avillez, cocina contemporánea portuguesa." },
+          { name: "Time Out Market", cuisine: "Variedad", price: "€", rating: 4.6, coords: [38.7075, -9.1426], description: "Mercado gastronómico con lo mejor de la ciudad." },
+          { name: "CERVEJARIA Ramiro", cuisine: "Marisquería", price: "€€", rating: 4.7, coords: [38.7159, -9.1416], description: "Mariscos frescos y ambiente popular." }
+        ]
+      }
+    }
+  },
+  marruecos: {
+    name: "Marruecos",
+    flag: "🇲🇦",
+    description: "Puertas al Sahara, medinas históricas y mercados sensoriales.",
+    cities: {
+      marrakech: {
+        name: "Marrakech",
+        description: "Ciudad de zocos, palacios y plazas vibrantes como Jemaa el-Fna.",
+        coords: [31.6295, -7.9811],
+        tours: [
+          { name: "Plaza Jemaa el-Fna y Zocos", description: "Explora la plaza principal, mercados y artesanía local.", duration: "2.5 horas", price: "€25", rating: 4.8, image: "https://images.unsplash.com/photo-1502741126161-b048400d3d1f?auto=format&fit=crop&w=600&q=80" },
+          { name: "Jardines Majorelle y Palacio", description: "Visita los jardines de Yves Saint Laurent y palacios cercanos.", duration: "2 horas", price: "€20", rating: 4.7, image: "https://images.unsplash.com/photo-1509395176047-4a66953fd231?auto=format&fit=crop&w=600&q=80" },
+          { name: "Excursión al Desierto (dunas y campamento)", description: "Aventura de noche en el desierto con cena y música tradicional.", duration: "14 horas", price: "€120", rating: 4.9, image: "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=600&q=80" }
+        ],
+        restaurants: [
+          { name: "Le Jardin", cuisine: "Marroquí/Internacional", price: "€€", rating: 4.6, coords: [31.6290, -7.9891], description: "Patio con vegetación y cocina local moderna." },
+          { name: "Nomad", cuisine: "Contemporánea Marroquí", price: "€€", rating: 4.7, coords: [31.6281, -7.9879], description: "Terraza con vistas a la medina y platos contemporáneos." },
+          { name: "Café des Épices", cuisine: "Café y Tapas", price: "€", rating: 4.5, coords: [31.6297, -7.9884], description: "Pequeño lugar con buena cocina local y especias." }
+        ]
+      }
+    }
+  },
+  italia: {
+    name: "Italia",
+    flag: "🇮🇹",
+    description: "Historia milenaria, arte, paisajes y una gastronomía insuperable.",
+    cities: {
+      roma: {
+        name: "Roma",
+        description: "La Ciudad Eterna: monumentos, plazas y una gastronomía clásica.",
+        coords: [41.9028, 12.4964],
+        tours: [
+          { name: "Coliseo y Foro Romano", description: "Visita guiada por las ruinas emblemáticas del Imperio Romano.", duration: "3 horas", price: "€50", rating: 4.9, image: "https://images.unsplash.com/photo-1503314885795-6f6f4e1f3d8f?auto=format&fit=crop&w=600&q=80" },
+          { name: "Ciudad del Vaticano y Museos", description: "Recorrido por la Basílica de San Pedro y la Capilla Sixtina.", duration: "3 horas", price: "€60", rating: 4.9, image: "https://images.unsplash.com/photo-1505765056433-0d7a6f3b6f6f?auto=format&fit=crop&w=600&q=80" },
+          { name: "Tour Gastronómico: Pasta y Gelato", description: "Clase y degustación de platos italianos artesanales.", duration: "2.5 horas", price: "€40", rating: 4.8, image: "https://images.unsplash.com/photo-1525755662778-989d0524087e?auto=format&fit=crop&w=600&q=80" }
+        ],
+        restaurants: [
+          { name: "La Pergola", cuisine: "Alta Cocina Italiana", price: "€€€€", rating: 4.9, coords: [41.9154, 12.4468], description: "Restaurante con estrellas Michelin y vistas panorámicas." },
+          { name: "Roscioli", cuisine: "Tradicional", price: "€€", rating: 4.8, coords: [41.8955, 12.4723], description: "Antipasti, pastas y bodega excelente en el centro histórico." },
+          { name: "Gelateria del Teatro", cuisine: "Helados Artísticos", price: "€", rating: 4.7, coords: [41.9007, 12.4693], description: "Helados artesanales con sabores tradicionales." }
+        ]
+      }
+    }
+  }
 };
 
 export const CHATBOT_RESPONSES = {

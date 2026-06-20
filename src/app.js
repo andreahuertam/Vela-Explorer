@@ -10,8 +10,12 @@ import { updateMap } from "./map.js";
 import { initChatbot, updateSuggestions } from "./chatbot.js";
 
 // Estado de la aplicación
-let activeCountryKey = "francia";
-let activeCityKey = "paris";
+// Seleccionar por defecto el primer país y su primera ciudad disponibles en los datos
+let activeCountryKey = Object.keys(TOURISM_DATA)[0] || "francia";
+let activeCityKey = (() => {
+  const country = TOURISM_DATA[activeCountryKey];
+  return country ? Object.keys(country.cities)[0] : "paris";
+})();
 
 /**
  * Obtiene los datos de la ciudad seleccionada actualmente.
@@ -233,7 +237,7 @@ function setupSearch() {
 // Inicialización de la aplicación al cargar el DOM
 document.addEventListener("DOMContentLoaded", () => {
   // Inicializar navegación y búsquedas
-  selectCountry("francia");
+  selectCountry(activeCountryKey);
   setupSearch();
 
   // Inicializar Chatbot de IA pasándole el callback para obtener datos de la ciudad activa
