@@ -97,7 +97,12 @@ Consulta [CHANGELOG.md](./CHANGELOG.md) para ver el historial completo de versio
 
 MIT — ver [LICENSE](./LICENSE) para más detalles.
 
-Copyright (c) 2026 Andrea Huerta
+## 🧑‍🤝‍🧑 Autores
+
+- Andrea Huerta
+- Angie Ramirez
+
+Copyright (c) 2026 Andrea Huerta, Angie Ramirez
 
 ---
 
