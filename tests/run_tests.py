@@ -56,8 +56,13 @@ def test_data_integrity():
         content = file.read()
     
     # Verificar países y ciudades clave en minúsculas
-    countries = ["francia", "japon", "espana"]
-    cities = ["paris", "niza", "tokio", "kioto", "madrid", "barcelona"]
+    countries = ["francia", "japon", "espana", "mexico", "alemania", "colombia", "argentina", "brasil", "portugal", "marruecos", "italia"]
+    cities = [
+        "paris", "niza", "tokio", "kioto", "madrid", "barcelona",
+        "ciudad_de_mexico", "cancun", "berlin", "munich", "cartagena", "medellin",
+        "buenos_aires", "bariloche", "rio", "sao_paulo", "lisboa", "oporto",
+        "marrakech", "fez", "roma", "florencia"
+    ]
     
     all_data_valid = True
     for c in countries:

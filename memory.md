@@ -14,6 +14,7 @@
 ## 🏗️ Log de Decisiones Técnicas (ADR Ligero)
 *Registro de por qué se tomaron ciertas rutas (ej. cambios en librerías, arquitectura o patrones).*
 
+- **2026-06-20 - Expansión del Catálogo de Destinos (11 Países y 22 Ciudades):** Se expande la base de datos local en `src/data.js` para registrar 2 ciudades clave por cada uno de los 11 países soportados (Francia, Japón, España, México, Alemania, Colombia, Argentina, Brasil, Portugal, Marruecos e Italia), estandarizando las geolocalizaciones de los restaurantes y sincronizando las respuestas del chatbot.
 - **2026-06-20 - Gestión del ciclo de vida de Leaflet.js y Estado del Chatbot:** Se decide inicializar una única instancia dinámica del mapa en `src/map.js`, destruyendo marcadores y reseteando coordenadas en cada cambio de destino para evitar fugas de memoria. Para evitar desincronizaciones en el Asistente de IA, la ciudad seleccionada en la UI se establece como la fuente de verdad contextual compartida con `src/chatbot.js`.
 - **2026-06-15 - Transición a dbv-specs-ops v2.0.0 (Agentic Engineering):** Implementación de los principios del libro blanco de Google. Se unificaron los Evals no deterministas de IA en la fase `/test` para simplificar el flujo, y se añadió la auditoría de seguridad en `/code-simplify` para evitar la fuga de credenciales o de paquetes alucinados (*slopsquatting*). Se transicionó la sección MCP en la arquitectura a una definición explícita de Arnés (Harness) del Agente.
 

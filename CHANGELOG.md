@@ -9,6 +9,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ## [Sin publicar] / [Unreleased]
 
+### Added
+- **Expansión de Destinos Turísticos**:
+  - Añadidos 8 nuevos países al catálogo con 2 ciudades cada uno: México (Ciudad de México, Cancún), Alemania (Berlín, Múnich), Colombia (Cartagena, Medellín), Argentina (Buenos Aires, Bariloche), Brasil (Río de Janeiro, São Paulo), Portugal (Lisboa, Oporto), Marruecos (Marrakech, Fez), e Italia (Roma, Florencia).
+  - Registrados 3 tours detallados y 3 restaurantes de alta valoración con coordenadas geográficas exactas para las 16 nuevas ciudades.
+  - Sincronizadas las respuestas contextuales del Asistente de IA local (consejos de viaje, transporte y clima) para todos los nuevos destinos.
+
 ---
 
 ## [2.2.0] — 2026-06-20

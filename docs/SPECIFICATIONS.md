@@ -22,8 +22,8 @@
 
 ## ✨ 3. Funcionalidades Principales (Requisitos)
 
-- [ ] **F1: Selector Interactivo de Países y Ciudades:**
-  - Navegación fluida de destinos (Mínimo 3 países con 2 ciudades clave por país).
+- [x] **F1: Selector Interactivo de Países y Ciudades:**
+  - Navegación fluida de destinos (11 países en total: Francia, Japón, España, México, Alemania, Colombia, Argentina, Brasil, Portugal, Marruecos e Italia, con 2 ciudades clave por país).
   - Filtrado y búsqueda instantánea de destinos en el Hero principal.
 - [ ] **F2: Catálogo de Actividades y Tours:**
   - Tarjetas de actividades turísticas con: imagen descriptiva, nombre, descripción breve, duración, costo aproximado y puntuación de usuarios.
