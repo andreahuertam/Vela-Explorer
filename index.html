@@ -1,0 +1,187 @@
+<!--
+  dbv-specs-ops — Spec-Driven Development (SDD) engineering system for AI-assisted coding
+  Copyright (c) 2026 Andrea Huerta
+  Licensed under the MIT License. See LICENSE for details.
+  Built with dbv-specs-ops · https://github.com/davidbuenov/dbv-specs-ops
+-->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Global Tour & Travel | Portal Turístico Premium</title>
+  <meta name="description" content="Explora los destinos más icónicos del mundo. Encuentra tours guiados exclusivos, ubica los restaurantes mejor valorados en nuestro mapa interactivo y resuelve tus dudas con nuestro Asistente de IA en tiempo real.">
+  
+  <!-- CSS del Sistema de Diseño -->
+  <link rel="stylesheet" href="index.css">
+  
+  <!-- CSS de Leaflet.js para mapas -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+  
+  <!-- Carga de Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+
+  <!-- CABECERA Y NAVEGACIÓN -->
+  <header class="main-header">
+    <div class="container header-container">
+      <a href="#" class="logo">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-compass"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>
+        <span>GlobalTour</span>
+      </a>
+      
+      <nav id="country-tabs" class="country-tabs">
+        <!-- Pestañas de países inyectadas dinámicamente -->
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO SECTION CON BÚSQUEDA -->
+  <section class="hero">
+    <div class="hero-content">
+      <span class="hero-tag">Aventuras del más alto nivel</span>
+      <h1>Explora el mundo <br>como un <span>verdadero insider</span></h1>
+      <p>Descubre ciudades icónicas, tours guiados exclusivos y deléitate en los restaurantes mejor calificados del planeta.</p>
+      
+      <!-- Buscador con autocompletado -->
+      <div class="search-wrapper">
+        <div class="search-box">
+          <input type="text" id="hero-search-input" placeholder="Busca una ciudad o país... (Ej: Tokio, España)" autocomplete="off">
+          <button class="search-btn" aria-label="Buscar">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-search"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+          </button>
+        </div>
+        <!-- Contenedor dinámico de resultados -->
+        <div id="search-results" class="search-results"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN DE EXPLORACIÓN DE DESTINOS -->
+  <main id="explorer-section" class="explorer-section container">
+    <div class="explorer-grid">
+      
+      <!-- Barra lateral de Ciudades -->
+      <aside class="sidebar">
+        <h2 class="sidebar-title">Ciudades</h2>
+        <div id="city-list" class="city-list">
+          <!-- Ciudades inyectadas dinámicamente -->
+        </div>
+      </aside>
+      
+      <!-- Contenido central (Actividades y Mapa) -->
+      <section class="main-content">
+        
+        <!-- Detalles e introducción de la ciudad -->
+        <div class="city-details-header">
+          <h2 id="city-detail-title">Cargando...</h2>
+          <p id="city-detail-desc">Selecciona una ciudad de la lista lateral para descubrir sus mejores ofertas.</p>
+        </div>
+        
+        <!-- Listado de Actividades / Tours -->
+        <div class="tours-wrapper">
+          <h3 class="tours-section-title">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sparkles"><path d="M12 3v16"/><path d="M5 12h14"/><path d="m15 5 4 4-4 4"/><path d="m9 19-4-4 4-4"/></svg>
+            Tours y Actividades Destacadas
+          </h3>
+          <div id="tours-grid" class="tours-grid">
+            <!-- Tarjetas de tours inyectadas dinámicamente -->
+          </div>
+        </div>
+        
+        <!-- Mapa interactivo de restaurantes -->
+        <div class="map-section">
+          <h3 class="tours-section-title">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-map-pin"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+            Gastronomía Premium (Restaurantes mejor valorados)
+          </h3>
+          <div class="map-wrapper">
+            <div id="map"></div>
+          </div>
+        </div>
+        
+      </section>
+      
+    </div>
+  </main>
+
+  <!-- WIDGET DE CHATBOT FLOTANTE (AGENTE IA) -->
+  <div class="chat-widget">
+    <!-- Botón flotante para abrir chat -->
+    <button id="chat-toggle" class="chat-toggle" aria-label="Abrir Asistente de IA">
+      <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-message-square-text"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M8 7h8"/><path d="M8 11h8"/></svg>
+    </button>
+
+    <!-- Ventana del chat -->
+    <div id="chat-window" class="chat-window">
+      <!-- Encabezado del Agente -->
+      <div class="chat-header">
+        <div class="chat-agent-info">
+          <div class="chat-avatar">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-bot"><path d="M12 8V4H8"/><rect width="16" height="12" x="4" y="8" rx="2"/><path d="M2 14h2"/><path d="M20 14h2"/><path d="M15 13v2"/><path d="M9 13v2"/></svg>
+          </div>
+          <div class="chat-agent-details">
+            <h4>Asistente de Viajes IA</h4>
+            <div class="chat-agent-status">
+              <span class="status-dot"></span>
+              En línea
+            </div>
+          </div>
+        </div>
+        <button id="chat-close" class="chat-close-btn" aria-label="Cerrar chat">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+        </button>
+      </div>
+
+      <!-- Cuerpo de la conversación -->
+      <div id="chat-messages" class="chat-messages">
+        <!-- Burbujas de mensajes inyectadas dinámicamente -->
+      </div>
+
+      <!-- Píldoras de sugerencias rápidas -->
+      <div class="chat-suggestions-container">
+        <div class="suggestions-title">Preguntas sugeridas</div>
+        <div id="chat-suggestions" class="chat-suggestions">
+          <!-- Botones inyectados dinámicamente -->
+        </div>
+      </div>
+
+      <!-- Caja de texto inferior -->
+      <div class="chat-footer">
+        <form id="chat-form" class="chat-form">
+          <input type="text" id="chat-input" placeholder="Pregúntame algo sobre tu destino..." required autocomplete="off">
+          <button type="submit" class="chat-send-btn" aria-label="Enviar mensaje">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-send-horizontal"><path d="m3 3 3 9-3 9 19-9Z"/><path d="M6 12h16"/></svg>
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- PIE DE PÁGINA -->
+  <footer class="page-footer">
+    <div class="container">
+      <p>&copy; 2026 GlobalTour & Travel. Todos los derechos reservados.</p>
+      <p>Creado por Andrea Huerta utilizando <a href="https://github.com/davidbuenov/dbv-specs-ops" target="_blank" rel="noopener">dbv-specs-ops</a></p>
+    </div>
+  </footer>
+
+  <!-- Carga de Leaflet.js -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  
+  <!-- Lógica de la aplicación modular -->
+  <script type="module" src="src/app.js"></script>
+
+  <!-- Script para convertir selectores en iconos de Lucide -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      // Reemplaza elementos lucide si es necesario
+      if (window.lucide) {
+        window.lucide.createIcons();
+      }
+    });
+  </script>
+</body>
+</html>

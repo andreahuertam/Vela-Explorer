@@ -14,11 +14,13 @@
 ## 🏗️ Log de Decisiones Técnicas (ADR Ligero)
 *Registro de por qué se tomaron ciertas rutas (ej. cambios en librerías, arquitectura o patrones).*
 
+- **2026-06-20 - Gestión del ciclo de vida de Leaflet.js y Estado del Chatbot:** Se decide inicializar una única instancia dinámica del mapa en `src/map.js`, destruyendo marcadores y reseteando coordenadas en cada cambio de destino para evitar fugas de memoria. Para evitar desincronizaciones en el Asistente de IA, la ciudad seleccionada en la UI se establece como la fuente de verdad contextual compartida con `src/chatbot.js`.
 - **2026-06-15 - Transición a dbv-specs-ops v2.0.0 (Agentic Engineering):** Implementación de los principios del libro blanco de Google. Se unificaron los Evals no deterministas de IA en la fase `/test` para simplificar el flujo, y se añadió la auditoría de seguridad en `/code-simplify` para evitar la fuga de credenciales o de paquetes alucinados (*slopsquatting*). Se transicionó la sección MCP en la arquitectura a una definición explícita de Arnés (Harness) del Agente.
 
 ## ⚠️ Lecciones Aprendidas / Errores Evitados
 *Notas sobre bugs específicos, configuraciones que fallaron o refactors intentados para no repetirlos.*
 
+- **[Validación sin Entorno Node.js]**: En sistemas donde Node.js no está disponible de forma local, el desarrollo de suites de validación basadas en Python 3 para comprobar la existencia de ficheros, comprobar expresiones regulares (como cabeceras) y verificar la consistencia sintáctica de datos en archivos `.js` ofrece un mecanismo robusto y ligero de prueba local que evita bloqueos.
 - **[Feedback de Usabilidad]**: Es mejor integrar los conceptos nuevos (como Evals) en las fases existentes (`/test`) y delegar los modos de ejecución (Conductor/Orquestador) de forma implícita, en lugar de sobrecargar al desarrollador final con configuraciones complejas o preguntas confusas.
 - **[Estructura de Onboarding]**: En proyectos existentes con archivos raíz consolidados (como `README.md` y `CHANGELOG.md`), es preferible descargar el framework completo en una subcarpeta dedicada (`dbv-specs-ops/`) e indicar al agente su ubicación a través de un archivo de activación ligero (`CLAUDE.md`, `GEMINI.md`). Esto evita colisiones de archivos y mantiene limpio el código de producción.
 

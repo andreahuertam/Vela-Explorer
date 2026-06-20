@@ -13,7 +13,7 @@
 - **License:** MIT
 - **Languages:** Markdown, Shell, Python, JavaScript
 - **Agent Readiness (Web):** No
-- **Framework Version:** 2.1.0
+- **Framework Version:** 2.2.0
 
 
 ---

@@ -1,75 +1,67 @@
-# 📋 Especificaciones: [Nombre del Proyecto]
+# 📋 Especificaciones: Portal Turístico Global (dbv-specs-ops)
 
 > **Fase:** `/spec` (Especificación)
-> **Estado:** En Definición / Validado
-> **Última Revisión:** [Fecha]
+> **Estado:** Validado
+> **Última Revisión:** 2026-06-20
 
 ---
 
 ## 🎯 1. Contexto y Objetivos
 *Basado en la filosofía de "entender el problema antes de proponer la solución".*
 
-- **Problema:** [Describe el dolor o necesidad que motiva este proyecto. ¿Qué está roto o qué falta?]
-- **Objetivo (Éxito):** [¿Cómo sabremos que este proyecto ha tenido éxito? Define un resultado tangible.]
+- **Problema:** [CONFIRMADO] Los viajeros que visitan un portal turístico a menudo se encuentran con interfaces fragmentadas donde deben buscar ciudades en un lugar, consultar tours en otro, usar un mapa externo (como Google Maps) para ubicar restaurantes, y buscar información de soporte en secciones de FAQ obsoletas.
+- **Objetivo (Éxito):** [CONFIRMADO] Desarrollar un portal turístico de clase mundial con diseño premium, interactivo y unificado en una SPA. El portal permitirá explorar de manera fluida países y sus principales ciudades, ver actividades turísticas destacadas, consultar un mapa interactivo (usando Leaflet.js libre de API keys) con restaurantes de alta valoración, y realizar preguntas en tiempo real a un Agente de IA integrado directamente en la interfaz.
 
 ## 👥 2. Usuarios y Escenarios
 *Identifica para quién construimos y en qué situaciones usarán el sistema.*
 
-- **Perfil de Usuario:** [Ej: Desarrollador, Administrador de Hospital, Usuario final].
+- **Perfil de Usuario:** Turistas internacionales, planificadores de viajes y usuarios casuales que buscan explorar opciones de actividades y restauración de manera visual y ágil.
 - **Escenarios Clave:**
-  - *Escenario A:* [Ej: "El usuario necesita consultar el historial médico en menos de 2 segundos"].
-  - *Escenario B:* [Ej: "El sistema debe alertar si hay una colisión de horarios"].
+  - *Escenario A:* [CONFIRMADO] El usuario quiere planificar su día en París. Entra al portal, selecciona Francia -> París, ve los tours disponibles (como la visita a la Torre Eiffel), ubica en el mapa integrado un bistró altamente valorado en el barrio y le pregunta al chatbot interno: "¿Cuál es el mejor momento para visitar la Torre Eiffel?". El chatbot responde en tiempo real con recomendaciones útiles.
+  - *Escenario B:* [CONFIRMADO] Un usuario móvil quiere ver qué hacer en Tokio rápidamente. Accede a la web optimizada y responsiva, navega por las actividades y encuentra restaurantes destacados usando el mapa interactivo.
 
 ## ✨ 3. Funcionalidades Principales (Requisitos)
-*El "Qué" del sistema. Estas tareas se trasladarán luego a `task.md`.*
 
-- [ ] **Funcionalidad A:** [Descripción breve y criterio de aceptación].
-- [ ] **Funcionalidad B:** [Descripción breve y criterio de aceptación].
+- [ ] **F1: Selector Interactivo de Países y Ciudades:**
+  - Navegación fluida de destinos (Mínimo 3 países con 2 ciudades clave por país).
+  - Filtrado y búsqueda instantánea de destinos en el Hero principal.
+- [ ] **F2: Catálogo de Actividades y Tours:**
+  - Tarjetas de actividades turísticas con: imagen descriptiva, nombre, descripción breve, duración, costo aproximado y puntuación de usuarios.
+  - Micro-interacciones (efectos hover, modal/vista detallada de la actividad).
+- [ ] **F3: Mapa de Restaurantes Recomendados:**
+  - Integración de mapa interactivo basado en Leaflet.js.
+  - Marcadores de restaurantes mejor valorados en la ciudad seleccionada.
+  - Popups personalizados en el mapa con foto, nombre, tipo de comida, precio y valoración del restaurante.
+- [ ] **F4: Agente de IA Flotante (Chatbot):**
+  - Interfaz de conversación persistente (widget de chat en la esquina inferior derecha o panel lateral).
+  - Simulación de respuesta en tiempo real (streaming/efecto máquina de escribir).
+  - Motor de NLP básico/local capaz de responder con precisión preguntas específicas sobre los destinos cargados (clima, tours recomendados, comida típica, consejos de viaje) y ofrecer sugerencias de preguntas rápidas.
+  - Respuestas fluidas y personalizadas según el destino activo del usuario.
 
 ## 🏗️ 4. Propuesta de Solución Técnica (Resumen)
-*Enlace directo con `ARCHITECTURE.md`.*
+*Enlace directo con ARCHITECTURE.md.*
 
-- **Enfoque:** [Breve descripción de la solución técnica elegida].
-- **Dependencias Críticas:** [Ej: API externa, Servidor MCP específico].
-- **Oportunidades de Skills y MCPs**: [Analizar si el proyecto se beneficia de la creación de un servidor MCP local para conectar con la lógica interna, o de paquetes de habilidades dinámicas (skills/) para facilitar la orquestación del agente].
-- **Sistema de Diseño:** Si el proyecto tiene interfaz de usuario, ver `docs/DESIGN.md` para tokens de color, tipografía y componentes.
+- **Enfoque:** Single Page Application (SPA) responsiva e interactiva construida con HTML5 semántico, Vanilla CSS3 (efectos de glassmorphism, gradientes, CSS variables y animaciones nativas) y Vanilla JavaScript (ES6+) estructurado en módulos para la lógica del catálogo, el mapa y el agente.
+- **Dependencias Críticas:** Leaflet.js (CSS y JS desde CDN oficial) para renderizar mapas sin requerir API keys comerciales ni backend complejo. Google Fonts para tipografía premium.
+- **Oportunidades de Skills y MCPs**: En este proyecto SPA, la lógica de conocimiento del bot se cargará de manera estructurada en un módulo local para optimizar el rendimiento y la fidelidad del prototipo.
+- **Sistema de Diseño:** Consultar `docs/DESIGN.md` para las definiciones de colores HSL, tipografía, espaciado y tokens de diseño interactivos.
 
 ### 4.1. Agent Readiness Checklist (Proyectos Web)
-*Si la configuración de Agent Readiness (Web) está activa, documentar las tareas de descubrimiento para agentes inteligentes:*
-- [ ] **robots.txt**: Configurar con directiva `Content-Signal: ai-train=no, search=yes, ai-input=yes` y ruta al sitemap.
-- [ ] **llms.txt**: Crear mapa de contenidos en Markdown para agilizar la lectura semántica de la IA.
-- [ ] **auth.md**: Describir los procesos de registro y acceso para los bots.
-- [ ] **Metadatos en `.well-known/`**: Crear `api-catalog`, `oauth-protected-resource`, `oauth-authorization-server` y `http-message-signatures-directory`.
-- [ ] **Agent & MCP Cards**: Declarar la identidad del bot (`agent.json`) y la conexión al servidor MCP (`mcp.json`).
-- [ ] **agent-skills/**: Definir el índice `index.json` y los manifiestos `SKILL.md` de habilidades del proyecto.
-- [ ] **Negociación de Markdown**: Configurar el enrutamiento para retornar texto plano Markdown con la cabecera `Accept: text/markdown` y definir las cabeceras `Link` HTTP en el hosting.
+- **Agent Readiness (Web):** Desactivado en `project.config.md` ya que es una aplicación cliente local, pero estructuramos el código con alta semántica HTML5 para que cualquier agente lector lo comprenda perfectamente.
 
 ## 🚫 5. Fuera de Alcance (Out of Scope)
-*Vital para evitar el "scope creep" (crecimiento descontrolado del proyecto).*
-
-- [ ] [Funcionalidad o aspecto que NO se abordará en esta fase/versión].
+- [CONFIRMADO] Integración con pasarelas de pago reales para comprar los tours.
+- [CONFIRMADO] Integración con servicios API de mapas de pago (Google Maps, Mapbox) o servidores de backend de bases de datos.
+- [CONFIRMADO] Conectores de APIs de LLM comerciales (OpenAI, Anthropic) para el chatbot, evitando costos adicionales de API Key y facilitando una ejecución local inmediata e interactiva. El chatbot usará un motor de IA/NLP simulado local en JS de alta fidelidad.
 
 ## ⚠️ 6. Riesgos y Mitigación
-*Anticipar problemas es de ingenieros senior.*
-
-- **Riesgo:** [Ej: La API externa tiene límites de tasa (Rate limiting)].
-  - **Mitigación:** [Ej: Implementar un sistema de caché local].
-- **Riesgo de Seguridad y Privacidad (IA/Datos):** [Ej: Fuga de secretos, inyección de código vulnerable por parte del agente, o alucinación de paquetes dependientes].
-  - **Mitigación:** [Ej: Implementar hooks deterministas de pre-commit con escaneo de secrets como gitleaks, o auditoría obligatoria de dependencias en /code-simplify].
-- **Riesgo de Consumo de Contexto de IA / Mal Rastreo de Bots:** [Ej: Los agentes inteligentes consumen demasiados tokens interpretando código HTML complejo o se pierden en los formularios de registro].
-  - **Mitigación:** [Ej: Implementar un archivo llms.txt con el mapa web en Markdown y configurar la negociación dinámica de contenido en formato text/markdown].
+- **Riesgo:** Limitación de recursos en cliente al cargar Leaflet.js con múltiples marcadores y assets de imágenes pesados.
+  - **Mitigación:** Carga diferida (lazy load) de las vistas, uso de imágenes optimizadas de Unsplash para tours/ciudades y control del ciclo de vida del mapa destruyendo/reconstruyendo instancias al cambiar de ciudad.
+- **Riesgo:** El chatbot local puede parecer repetitivo si el usuario hace preguntas fuera de contexto.
+  - **Mitigación:** Proveer "preguntas sugeridas dinámicas" según la ciudad activa y respuestas predeterminadas educadas e ingeniosas para preguntas no reconocidas.
 
 ## ❓ 7. Preguntas Abiertas
-*Cosas que aún no sabemos o decisiones que dependen del usuario.*
-
-- [ ] ¿Necesitamos soporte offline desde el primer día?
-- [ ] ¿Qué volumen de datos esperamos manejar en el primer mes?
+- Ninguna por el momento. La especificación cubre los requisitos dados por el usuario.
 
 ## 🧪 8. Criterios de Evaluación y Evals (No Deterministas)
-*Define las rúbricas y métricas de calidad para evaluar la salida de componentes no deterministas (IA, prompts, etc.) integrados en la fase /test.*
-
-- [ ] **Métricas de Output:** [Ej: Precisión de respuesta, conformidad de formato JSON, ausencia de alucinaciones].
-- [ ] **Métricas de Trayectoria:** [Ej: Eficiencia en el uso de herramientas MCP, límite de llamadas a la API].
-
----
-**Instrucción para la IA:** No pases a la fase `/plan` hasta que las "Preguntas Abiertas" críticas hayan sido resueltas o tengan un camino de solución definido.
+- [ ] **Métricas del Chatbot:** Validación del flujo de conversación, autocompletado y asertividad de las respuestas de IA mockeadas en base a la ciudad seleccionada.

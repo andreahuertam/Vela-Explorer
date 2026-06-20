@@ -1,8 +1,8 @@
-# 🏗 Arquitectura Técnica: [Nombre del Proyecto]
+# 🏗 Arquitectura Técnica: Portal Turístico Global (dbv-specs-ops)
 
 > **Fase:** `/plan` (Planificación Técnica)
-> **Estado:** Borrador / Validado
-> **Última Revisión:** [Fecha]
+> **Estado:** Validado
+> **Última Revisión:** 2026-06-20
 
 ---
 
@@ -10,99 +10,68 @@
 
 | Capa | Tecnología | Justificación |
 | --- | --- | --- |
-| **Lenguaje** | [Ej: TypeScript 5.x] | [Ej: Tipado estático, ecosistema maduro] |
-| **Framework principal** | [Ej: Fastify / React] | [Ej: Alto rendimiento / SPA sin complejidad SSR] |
-| **Persistencia** | [Ej: SQLite / PostgreSQL] | [Ej: Sin infra para MVP / producción] |
-| **Autenticación** | [Ej: JWT + bcrypt] | [Ej: Stateless, fácil de escalar] |
-| **Testing** | [Ej: Vitest / Pytest] | [Ej: Rápido, compatible con ESM] |
-| **CI/CD** | [Ej: GitHub Actions] | [Ej: Integrado con el repo] |
+| **Lenguaje** | JavaScript (ES6+), HTML5, CSS3 | Nativo del navegador, rápido, sin necesidad de paso de compilación para el MVP. |
+| **Biblioteca de Mapas** | Leaflet.js | Biblioteca open-source, ligera y libre de API keys comerciales. |
+| **Estilos (CSS)** | Vanilla CSS3 (Custom Properties) | Máxima flexibilidad, control de animaciones de alto rendimiento y fácil mantenimiento. |
+| **Tipografía** | Outfit & Inter (Google Fonts) | Combinación de tipografía de gran personalidad (Outfit para títulos) y alta legibilidad (Inter para textos). |
+| **Iconografía** | Lucide Icons / SVG directos | Iconos modernos, consistentes y ligeros. |
 
 ---
 
 ## 📂 Estructura de Directorios
 
+El proyecto se estructurará como una Single Page Application (SPA) modular:
+
 ```text
 /
-├── src/
-│   ├── domain/          # Lógica de negocio pura (sin dependencias externas)
-│   ├── application/     # Casos de uso, orquestación
-│   ├── infrastructure/  # BD, APIs externas, servicios externos
-│   └── interfaces/      # Controladores HTTP, CLI, WebSocket
-├── tests/
-│   ├── unit/
-│   └── integration/
-├── docs/                # Documentación del proyecto (este directorio)
-└── [config files]       # tsconfig, .env.example, etc.
+├── docs/                # Ficheros de metodología SDD (especificaciones, arquitectura)
+│   ├── MASTER_PROMPT.md
+│   ├── SPECIFICATIONS.md
+│   ├── ARCHITECTURE.md
+│   └── DESIGN.md
+├── src/                 # Código fuente
+│   ├── data.js          # Base de datos local (Destinos, Actividades, Restaurantes y respuestas del Agente)
+│   ├── map.js           # Módulo de integración de mapas con Leaflet.js
+│   ├── chatbot.js       # Cerebro y lógica de conversación del Agente de IA
+│   └── app.js           # Orquestador de la UI, navegación y eventos del DOM
+├── index.html           # Estructura HTML5 semántica principal de la SPA
+├── index.css            # Estilos del sistema de diseño (Colores, Layout, Glassmorphism, Responsive)
+├── project.config.md    # Identidad y metadatos de dbv-specs-ops
+├── memory.md            # Registro de decisiones de arquitectura persistentes
+├── task.md              # Backlog operativo y snapshots
+└── LICENSE              # Licencia MIT
 ```
-
-> Adapta esta estructura al stack elegido. Si es un proyecto pequeño, una sola carpeta `src/` plana es suficiente.
 
 ---
 
 ## 🔑 Decisiones Técnicas Clave
 
-### Seguridad
+### Estructura de Datos (en `src/data.js`)
+Consolida la información geográfica y de IA en un único archivo accesible por los módulos de la aplicación.
+* **Países soportados:** Francia, Japón, España.
+* **Ciudades clave:** París, Niza, Tokio, Kioto, Madrid, Barcelona.
+* **Por Ciudad:**
+  * Catálogo de 3 actividades destacadas (tours con nombre, precio, duración, puntuación y foto).
+  * Catálogo de 3 restaurantes recomendados con coordenadas geográficas latitud/longitud para el mapa.
+  * Respuestas personalizadas para el Chatbot.
 
-- **Autenticación:** [Ej: JWT con expiración de 1h + refresh token en httpOnly cookie]
-- **Autorización:** [Ej: RBAC — roles definidos en BD]
-- **Datos sensibles:** [Ej: Variables de entorno via `.env`, nunca en código]
+### Módulo de Mapas (en `src/map.js`)
+* Usa el mapa de Leaflet.js con tiles de OpenStreetMap estilizados (CartoDB Positron / Stadia Dark) para fundirse con la estética oscura premium.
+* Maneja dinámicamente la creación y destrucción de la instancia del mapa al alternar de ciudad para prevenir memory leaks y problemas de re-inicialización.
+* Genera marcadores interactivos que muestran tooltips y popups premium al hacer clic.
 
-### Estilo de Código
-
-- **Paradigma:** [Ej: Funcional preferente / Orientado a objetos]
-- **Convenciones:** Ver repo de referencia en `MASTER_PROMPT.md`
-- **Complejidad máxima por función:** [Ej: 20 líneas / complejidad ciclomática < 5]
-
-### Gestión de Estado
-
-- [Ej: Estado del servidor en BD, estado UI en React Context (sin Redux hasta que escale)]
-
----
-
-## 🔗 Integraciones Externas
-
-| Servicio | Propósito | Notas / Límites |
-| --- | --- | --- |
-| [Ej: Stripe API] | [Pagos] | [Rate limit: 100 req/s] |
-| [Ej: SendGrid] | [Email transaccional] | [Free tier: 100 emails/día] |
-
----
-
-## ⚠️ Restricciones y Riesgos Técnicos
-
-- **Restricción:** [Ej: El despliegue debe ser en un VPS de 1GB RAM — optimizar footprint]
-- **Riesgo:** [Ej: Dependencia de API de terceros sin SLA garantizado]
-  - **Mitigación:** [Ej: Circuit breaker + caché local de 5 min]
+### Agente de IA Flotante (en `src/chatbot.js`)
+* **Modelo local de concordancia:** Utiliza expresiones regulares e indexación semántica ligera para mapear palabras clave de la pregunta del usuario con las respuestas apropiadas de cada destino.
+* **Streaming de salida:** Implementa un generador asíncrono que escribe caracteres progresivamente (efecto máquina de escribir) a una velocidad configurable para imitar el streaming de modelos generativos reales.
+* **Estado Contextual:** El chatbot reconoce automáticamente la ciudad y el país activos del usuario en la interfaz para adaptar sus recomendaciones ("¿Qué tours hay aquí?", "¿Dónde puedo cenar?").
 
 ---
 
 ## 🤖 Agent Harness (Arnés del Agente)
 
-> Rellena esta sección para configurar la infraestructura, el contexto y las herramientas que rodean al agente de IA para que trabaje de forma segura y autónoma.
+### 1. Gestión de Contexto
+* **Contexto Estático:** Cargado automáticamente mediante `GEMINI.md`, `CLAUDE.md`, `memory.md` y `task.md`.
+* **Contexto Dinámico:** Los archivos fuente en `src/` están modularizados y documentados para facilitar su mantenimiento por agentes.
 
-### 1. Gestión de Contexto (Context Engineering)
-- **Contexto Estático:** [Ficheros de reglas globales y memory cargados siempre en el arranque (ej: CLAUDE.md, GEMINI.md, memory.md)].
-- **Contexto Dinámico / Skills:** [Lista de módulos de habilidades en skills/ o pipelines RAG cargados bajo demanda por el agente].
-
-### 2. Herramientas y MCP (Model Context Protocol)
-- **Servidores MCP Requeridos:** [Ej: filesystem, sqlite (para acceso estructurado a datos), github (para gestión de PRs)].
-- **Propósito:** [Ej: Conexión directa a base de datos de staging para consultas de contexto].
-- **Configuración de Herramientas:** Ver `.claude/settings.json`, `.windsurfrules` o equivalentes.
-
-### 3. Entorno de Ejecución (Sandboxing)
-- **Aislamiento:** [Define el sandbox donde corre el agente. Ej: Docker local, máquina virtual, o entorno virtual local (venv)].
-- **Límites de Ejecución:** [Límites de coste de tokens, tiempos de timeout o número máximo de iteraciones en comandos asíncronos].
-
-### 4. Guardrails Deterministas de Seguridad
-- **Filtros de Código:** [Definición de scripts automáticos (linters, pre-commit hooks con gitleaks, herramientas SAST) para evitar la filtración de secretos o dependencias ficticias generadas por la IA].
-- **Políticas de Commit/Push:** [Ej: Bloquear commits que contengan strings que parezcan API keys o passwords].
-
-### 5. Interfaz Externa para Agentes (Agent Readiness)
-*Define la arquitectura y métodos que permiten a agentes externos descubrir y consumir los servicios del sitio:*
-- **Autodescubrimiento**: [Describe cómo se exponen los recursos de IA (ej: Link Headers en el servidor web inyectando las tarjetas de agente, api-catalog, etc.)].
-- **Protocolos y Tarjetas**: [Ubicación de tarjetas de agente (agent.json) y mcp.json. Detalla el soporte para el protocolo de contexto Model Context Protocol (MCP) y WebMCP en cliente].
-- **Formato del Contenido**: [Define las políticas de optimización de contexto, tales como la negociación dinámica de Markdown para cabeceras Accept: text/markdown y la estructura de agent-skills/].
-
----
-
-**Instrucción para la IA:** Respeta las decisiones y configuraciones del arnés documentadas aquí. Si necesitas desviarte por un motivo técnico o sugerir una nueva herramienta MCP/Skill para el proyecto, regístralo como "Decisión Técnica" en `memory.md` y obtén la aprobación del desarrollador.
+### 2. Guardrails de Seguridad
+* Se auditará el código generado en la fase `/code-simplify` para asegurar la ausencia de tokens quemados y la correcta sanitización de las entradas de texto en el cuadro de chat del usuario para mitigar ataques de inyección XSS.

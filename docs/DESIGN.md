@@ -1,194 +1,88 @@
-# 🎨 Sistema de Diseño: [Nombre del Proyecto]
+# 🎨 Sistema de Diseño Visual: Portal Turístico Global (dbv-specs-ops)
 
 > **Fase:** `/spec` (Especificación Visual)
-> **Estado:** Borrador / Validado
-> **Última Revisión:** [Fecha]
-> **Aplica a:** Proyectos con interfaz de usuario (web, móvil, desktop). Opcional para proyectos sin UI.
+> **Estado:** Validado
+> **Última Revisión:** 2026-06-20
 
 ---
 
-> 📐 Inspirado en el estándar **[design.md](https://github.com/google-labs-code/design.md)** de Google Labs — un formato abierto para describir identidades visuales a agentes de codificación.
+## 🎨 Paleta de Colores (HSL Tailored)
 
----
+Para lograr una estética moderna y premium de nivel internacional, utilizaremos una paleta oscura sofisticada combinada con acentos de color vibrantes e inspiradores.
 
-```yaml
-# ────────────────────────────────────────────────
-# DESIGN TOKENS — Legibles por la IA y por máquina
-# ────────────────────────────────────────────────
-version: alpha
-name: "[Nombre del Proyecto]"
-description: "[Breve descripción del estilo visual. Ej: Minimalismo editorial con acento en la claridad y el contraste.]"
+```css
+:root {
+  /* Fondos y Superficies */
+  --bg-primary: hsl(220, 20%, 8%);      /* Fondo profundo de la aplicación */
+  --bg-secondary: hsl(220, 16%, 12%);   /* Fondo de secciones secundarias */
+  --surface: hsl(220, 14%, 16%);        /* Tarjetas, paneles y modales */
+  --surface-hover: hsl(220, 14%, 22%);  /* Estado hover de tarjetas */
+  --border-color: hsl(220, 12%, 22%);   /* Bordes sutiles y separadores */
 
-# COLORES
-# Usa códigos HEX. El campo "on-X" es el color de texto que va sobre el color "X".
-colors:
-  primary:      "#[hex]"   # Color principal de marca
-  secondary:    "#[hex]"   # Color secundario / complementario
-  accent:       "#[hex]"   # Color de llamada a la acción (CTAs, highlights)
-  neutral:      "#[hex]"   # Fondo base neutro
-  surface:      "#[hex]"   # Fondo de tarjetas y contenedores
-  on-primary:   "#[hex]"   # Texto sobre "primary" (suele ser blanco o muy claro)
-  on-surface:   "#[hex]"   # Texto principal sobre "surface"
-  on-neutral:   "#[hex]"   # Texto secundario / mutado
-  error:        "#[hex]"   # Rojo para errores y alertas destructivas
-  success:      "#[hex]"   # Verde para confirmaciones y éxito
-  warning:      "#[hex]"   # Amarillo/naranja para advertencias
+  /* Colores de Acento */
+  --accent-ocean: hsl(192, 95%, 48%);   /* Azul océano para botones activos, enlaces y focus */
+  --accent-gradient: linear-gradient(135deg, hsl(192, 95%, 48%), hsl(220, 90%, 56%));
+  --accent-gold: hsl(43, 96%, 56%);     /* Dorado premium para calificaciones y medallas */
+  
+  /* Textos */
+  --text-primary: hsl(220, 10%, 96%);   /* Títulos y textos principales */
+  --text-secondary: hsl(220, 8%, 70%);  /* Descripciones y subtítulos */
+  --text-muted: hsl(220, 6%, 50%);       /* Fechas, metadatos e iconos secundarios */
 
-# MODO OSCURO (Dark Mode) — Opcional pero recomendado
-# Define los overrides de color. Los tokens no listados aquí heredan los valores de luz.
-dark:
-  primary:      "#[hex]"
-  secondary:    "#[hex]"
-  accent:       "#[hex]"
-  neutral:      "#[hex]"   # Ej: "#111111" — fondo oscuro principal
-  surface:      "#[hex]"   # Ej: "#1E1E1E" — tarjetas sobre fondo oscuro
-  on-primary:   "#[hex]"
-  on-surface:   "#[hex]"
-  on-neutral:   "#[hex]"
-
-# TIPOGRAFÍA
-# fontFamily: nombre exacto de Google Fonts o fuente del sistema.
-typography:
-  heading:
-    fontFamily: "[Ej: Inter]"
-    fontSize:   2rem
-    fontWeight: 700
-    lineHeight: 1.2
-    letterSpacing: "-0.02em"
-  subheading:
-    fontFamily: "[Ej: Inter]"
-    fontSize:   1.25rem
-    fontWeight: 600
-    lineHeight: 1.3
-  body:
-    fontFamily: "[Ej: Inter]"
-    fontSize:   1rem
-    fontWeight: 400
-    lineHeight: 1.6
-  label:
-    fontFamily: "[Ej: Inter]"
-    fontSize:   0.875rem
-    fontWeight: 500
-    letterSpacing: "0.01em"
-  caption:
-    fontFamily: "[Ej: Inter]"
-    fontSize:   0.75rem
-    fontWeight: 400
-
-# BORDES Y RADIOS
-rounded:
-  none: 0px
-  sm:   4px
-  md:   8px
-  lg:   16px
-  xl:   24px
-  full: 9999px
-
-# ESPACIADO (escala base 4px)
-spacing:
-  xs:  4px
-  sm:  8px
-  md:  16px
-  lg:  24px
-  xl:  48px
-  xxl: 96px
-
-# COMPONENTES — Mapeo de tokens a elementos de UI concretos
-# Usa referencias {ruta.al.token} para garantizar coherencia.
-components:
-  button-primary:
-    backgroundColor: "{colors.accent}"
-    textColor:       "{colors.on-primary}"
-    typography:      "{typography.label}"
-    rounded:         "{rounded.md}"
-    padding:         "12px 24px"
-  button-primary-hover:
-    backgroundColor: "{colors.primary}"
-  button-secondary:
-    backgroundColor: "transparent"
-    textColor:       "{colors.accent}"
-    rounded:         "{rounded.md}"
-    padding:         "12px 24px"
-    border:          "1.5px solid {colors.accent}"
-  card:
-    backgroundColor: "{colors.surface}"
-    rounded:         "{rounded.lg}"
-    padding:         "{spacing.lg}"
-  input:
-    backgroundColor: "{colors.surface}"
-    textColor:       "{colors.on-surface}"
-    rounded:         "{rounded.md}"
-    padding:         "10px 14px"
-    border:          "1px solid {colors.on-neutral}"
-  input-focus:
-    border:          "2px solid {colors.accent}"
+  /* Efecto Glassmorphism */
+  --glass-bg: hsla(220, 20%, 8%, 0.7);
+  --glass-border: hsla(220, 10%, 96%, 0.08);
+  --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  --glass-blur: blur(16px);
+}
 ```
 
 ---
 
-## Visión General
+## 🔤 Tipografía y Jerarquía
 
-*[2-3 frases que describan la filosofía visual del proyecto. ¿Qué emoción o sensación debe evocar la interfaz? ¿Qué referentes de diseño lo inspiran?]*
+Utilizaremos Google Fonts para importar dos familias tipográficas:
+* **Outfit:** Utilizada exclusivamente para encabezados (`h1`, `h2`, `h3`) por su carácter geométrico, moderno y elegante.
+* **Inter:** Utilizada para textos de párrafos, etiquetas, tablas, botones y el chat, debido a su excelente legibilidad en pantallas digitales de cualquier tamaño.
 
-> Ejemplo: *"La interfaz combina minimalismo editorial con toques de calidez. Cada elemento comunica claridad y confianza, evocando las mejores herramientas SaaS profesionales. El usuario debe sentir que está usando algo construido para durar."*
-
----
-
-## 🎨 Colores
-
-*Explica el rol de cada color y cómo debe (y no debe) usarse.*
-
-- **Primary (`[hex]`):** [Ej: Azul profundo. Color de marca principal. Úsalo en headers y elementos clave de navegación. Nunca en fondos de página completa.]
-- **Secondary (`[hex]`):** [Ej: Gris azulado. Para elementos de soporte, bordes y estados secundarios.]
-- **Accent (`[hex]`):** [Ej: Coral. El único motor de interacción — todos los CTAs, enlaces y elementos activos usan este color. Resérvalo para acciones, no decoración.]
-- **Neutral (`[hex]`):** [Ej: Blanco cálido. Base de todas las páginas. Más suave que el blanco puro para reducir la fatiga visual.]
-- **Surface (`[hex]`):** [Ej: Gris muy claro. Para tarjetas, modales y paneles que elevan el contenido del fondo.]
-- **Error / Success / Warning:** [Semánticos. Solo para feedback del sistema, nunca como decoración.]
-
-### Modo Oscuro
-*[Describe la estrategia del modo oscuro. ¿Es una inversión completa, una paleta propia, o solo algunos colores cambian?]*
-
-- **Estrategia:** [Ej: "Los fondos usan grises profundos (no negro puro) para evitar halos. Los colores de marca se mantienen, pero con mayor luminosidad para cumplir contraste WCAG AA sobre fondos oscuros."]
+```css
+/* Escala de fuentes sugerida */
+h1 { font-family: 'Outfit', sans-serif; font-size: 2.5rem; font-weight: 700; letter-spacing: -0.02em; }
+h2 { font-family: 'Outfit', sans-serif; font-size: 1.8rem; font-weight: 600; letter-spacing: -0.01em; }
+h3 { font-family: 'Outfit', sans-serif; font-size: 1.3rem; font-weight: 600; }
+body, input, button { font-family: 'Inter', sans-serif; font-size: 0.95rem; font-weight: 400; line-height: 1.5; }
+```
 
 ---
 
-## ✍️ Tipografía
+## 🏗️ Componentes de UI e Interacciones
 
-*Justifica la elección de fuentes y explica la escala.*
+### 1. Cabecera (Header)
+* **Estilo:** Transparente con fondo glassmorphism cuando se hace scroll.
+* **Elementos:** Logo premium (con icono de compás o mundo en SVG), enlaces de países rápidos y un indicador del destino activo.
 
-- **Fuente principal:** [Ej: `Inter` — Elegida por su excelente legibilidad en pantalla a todos los tamaños y su amplia familia de pesos.]
-- **Fuente alternativa:** [Ej: `System UI` como fallback para carga instantánea sin layout shift.]
-- **Escala:** La escala tipográfica sigue una progresión modular de 1.25. Los headings usan tracking negativo (-0.02em) para aspecto más premium. El body usa lineHeight 1.6 para máxima legibilidad.
-- **No usar:** [Ej: Nunca mezclar más de 2 familias tipográficas. Nunca usar `font-weight: 300` en textos menores de 16px sobre fondo oscuro.]
+### 2. Destinos e Explorer Grid
+* **Tarjetas de Ciudades/Actividades:**
+  * **Efectos:** Sombras profundas en reposo, elevación sutil (`transform: translateY(-5px)`) y borde de acento en hover.
+  * **Imágenes:** Gradiente de oscuro a transparente overlay en la base para asegurar legibilidad del texto de título.
+  * **Calificaciones:** Visualización de estrellas en dorado con la puntuación (ej: `⭐ 4.9`).
 
----
+### 3. Mapa Interactivo (Leaflet.js)
+* **Contenedor:** Esquinas redondeadas (`border-radius: 16px`), borde sutil y sombra.
+* **Estilo del mapa:** Cargará tiles de tipo 'CartoDB Positron' o similar de bajo contraste para no romper la estética oscura.
+* **Popups:** Fondo oscuro personalizado con el diseño del portal.
 
-## 🧩 Componentes Clave
-
-*Describe las decisiones de diseño de los componentes más importantes.*
-
-### Botones
-- **Primary:** [Ej: "Fondo accent, texto blanco, radio md. Único por pantalla. Es el grito — solo uno debe gritar."]
-- **Secondary:** [Ej: "Contorno transparente con borde accent. Para acciones importantes pero no primarias."]
-- **Ghost / Text:** [Ej: "Sin borde ni fondo. Para acciones terciarias o en contextos densos de información."]
-
-### Tarjetas (Cards)
-- [Ej: "Surface background, radio lg, sombra suave (`box-shadow: 0 2px 8px rgba(0,0,0,0.08)`). Sin borde. El espacio interno mínimo es spacing.lg (24px)."]
-
-### Formularios
-- [Ej: "Inputs con borde de 1px neutral. En focus, el borde aumenta a 2px y cambia a accent. Nunca uses fondos coloreados en campos de formulario."]
+### 4. Widget de Chat (Agente de IA)
+* **Botón Flotante:** Círculo con gradiente ocean y sombra pronunciada, con micro-animación de pulso discreto.
+* **Ventana de Conversación:**
+  * **Estructura:** Encabezado con estado del agente ("En línea" con un led verde animado), lista de mensajes scrollable y caja de entrada de texto.
+  * **Efecto de Entrada:** Mensajes que aparecen con una animación suave de desvanecimiento y deslizamiento hacia arriba (`fade-in-up`).
+  * **Preguntas Sugeridas:** Etiquetas con bordes redondeados (`pill buttons`) que permiten enviar preguntas comunes al bot con un solo clic.
 
 ---
 
-## ✨ Movimiento e Interacción
+## 💫 Micro-Animaciones y Transiciones
 
-*Define la "física" de la interfaz: velocidades, curvas de animación y principios.*
-
-- **Duración base:** `200ms` para micro-interacciones (hover, focus). `350ms` para transiciones de página o apertura de modales.
-- **Easing:** `cubic-bezier(0.4, 0, 0.2, 1)` (Material Design Standard) para la mayoría de animaciones. `ease-out` para elementos que "caen" en pantalla. `ease-in` para elementos que "salen".
-- **Principio:** [Ej: "Las animaciones son funcionales, no decorativas. Si eliminar una animación no reduce la comprensión, elimínala."]
-- **Reducción de movimiento:** Siempre respeta `prefers-reduced-motion`. Sustituye transiciones por cambios instantáneos o fundidos muy cortos (50ms).
-
----
-
-**Instrucción para la IA:** Lee y respeta los tokens y decisiones definidos en este fichero. Si necesitas crear un componente no definido aquí, extrapola coherentemente desde los tokens existentes y registra la nueva decisión como "Decisión de Diseño" en este mismo archivo con fecha y justificación. Para proyectos sin UI, este fichero puede omitirse.
+* **Transiciones globales:** `transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);` para botones, enlaces y tarjetas.
+* **Efecto de Carga (Skeleton/Spinner):** Un sutil shimmer o indicador circular de acento azul océano cuando se carga una nueva ciudad o se procesa la respuesta del chatbot.
+* **Typing Indicator (Animación del Chat):** Tres puntos rebotando rítmicamente en el globo del agente mientras "escribe" la respuesta.

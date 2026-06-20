@@ -11,6 +11,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ---
 
+## [2.2.0] — 2026-06-20
+
+### Added
+- **Portal Turístico Global (v1.0.0)**:
+  - Estructura base SPA responsiva en `index.html`.
+  - Estilos de tema oscuro premium con glassmorphism en `index.css`.
+  - Base de datos local de destinos (Francia, Japón, España), tours y restaurantes recomendados en `src/data.js`.
+  - Integración de mapas dinámicos con Leaflet.js y pines personalizados en `src/map.js`.
+  - Lógica de Asistente de IA local con NLP contextual y streaming en `src/chatbot.js`.
+  - Orquestador de vistas, router y motor de búsqueda en `src/app.js`.
+  - Scripts de arranque y parada multiplataforma (`start.sh`, `stop.sh`, `start.cmd`, `stop.cmd`).
+
 ## [2.1.0] — 2026-06-17
 
 ### Added
@@ -205,7 +217,8 @@ Initial public release of the **dbv-specs-ops** SDD framework.
 
 ---
 
-[Sin publicar]: https://github.com/davidbuenov/dbv-specs-ops/compare/v2.1.0...HEAD
+[Sin publicar]: https://github.com/davidbuenov/dbv-specs-ops/compare/v2.2.0...HEAD
+[2.2.0]: https://github.com/davidbuenov/dbv-specs-ops/compare/v2.1.0...v2.2.0
 [2.1.0]: https://github.com/davidbuenov/dbv-specs-ops/compare/v2.0.0...v2.1.0
 [2.0.0]: https://github.com/davidbuenov/dbv-specs-ops/compare/v1.5.2...v2.0.0
 [1.5.2]: https://github.com/davidbuenov/dbv-specs-ops/compare/v1.5.1...v1.5.2

@@ -1,38 +1,44 @@
-# 📝 Registro de Tareas: dbv-specs-ops v2.1.0 (Agent Readiness Integration)
+# 📝 Registro de Tareas: Portal Turístico Global (dbv-specs-ops)
 
 ## 🏗 In Progress / En Curso
 
-*(No active tasks)*
+- [/] **Fase 6: Entrega (`/ship`)**
+  - [/] Crear `walkthrough.md` y actualizar `README.md`.
+  - [ ] Configurar el control de versiones y crear commit final.
 
 ## ⏳ Pending / Pendientes (Backlog)
 
-*(No tasks pending)*
+*(Ninguna tarea pendiente en el backlog principal)*
 
 ## ✅ Completed / Completadas
 
+- [x] **Fase 0/1: Inicialización y Especificación**
+  - [x] Completar bootstrap del proyecto y rellenar `project.config.md`.
+  - [x] Inicializar repositorio git local y crear commit de bootstrap.
 - [x] **Fase 2: Planificación y Preparación**
-  - [x] Crear `implementation_plan.md` y actualizar `task.md` con las tareas activas.
-  - [x] Obtener aprobación final del usuario sobre los cambios propuestos.
+  - [x] Crear `docs/SPECIFICATIONS.md` con los requisitos del portal turístico.
+  - [x] Crear `docs/ARCHITECTURE.md` con el diseño de arquitectura y stack.
+  - [x] Crear `docs/DESIGN.md` con el sistema de diseño visual HSL.
+  - [x] Crear `implementation_plan.md` y obtener aprobación del usuario.
 - [x] **Fase 3: Construcción (`/build`)**
-  - [x] Modificar `project.config.md` para añadir la propiedad de `Agent Readiness` y subir la versión a `2.1.0`.
-  - [x] Actualizar `docs/MASTER_PROMPT.md` con las directivas de Agent Readiness en bootstrap, `/spec`, `/build` y `/ship`.
-  - [x] Actualizar `docs/SPECIFICATIONS.md` con el checklist y el riesgo asociado.
-  - [x] Actualizar `docs/ARCHITECTURE.md` con la sección de interfaz externa bajo el arnés.
-  - [x] Corregir la contradicción en `README.md` (reemplazando `/plan` por `/spec` como comando inicial).
-  - [x] Registrar los cambios en `CHANGELOG.md` y `docs/UPGRADE_PROMPT.md`.
+  - [x] Crear la estructura de archivos en la raíz (index.html, index.css, src/).
+  - [x] Implementar `src/data.js` con el catálogo de destinos (Francia, Japón, España), tours, restaurantes y respuestas del chat.
+  - [x] Implementar `index.css` con el sistema de diseño (estilos oscuros, glassmorphism, responsividad, animaciones).
+  - [x] Implementar la estructura e interactividad base en `index.html` y `src/app.js` (navegación, renderizado de ciudades).
+  - [x] Integrar Leaflet.js en `src/map.js` para renderizar el mapa interactivo y colocar marcadores personalizados.
+  - [x] Desarrollar `src/chatbot.js` con el cerebro de IA local, detección de contexto e interfaz de chat flotante.
+  - [x] Crear scripts de arranque y parada (`start.sh`, `stop.sh`, `start.cmd`, `stop.cmd`) y cabeceras en todos los archivos.
 - [x] **Fase 4: Pruebas y Verificación (`/test`)**
-  - [x] Validar la sintaxis de todos los archivos y plantillas modificados.
+  - [x] Validar la responsividad en móviles, tablets y escritorio.
+  - [x] Crear y ejecutar script de test unitario (`tests/run_tests.py`) para verificar la integridad de datos e intents del chat.
 - [x] **Fase 5: Simplificar (`/code-simplify`)**
-  - [x] Auditar coherencia y lenguaje del prompt.
-- [x] **Fase 6: Entrega (`/ship`)**
-  - [x] Completar `walkthrough.md` detallando las novedades de la v2.1.0.
-  - [x] Publicar la versión en `CHANGELOG.md` con fecha de hoy y corregir los links de comparación.
+  - [x] Realizar auditoría de seguridad y verificar que no haya filtración de secretos, endpoints vulnerables ni dependencias ficticias.
 
 ---
 
 ## 🔄 Context Snapshot / Snapshot de Contexto
 
-> **Last update / Última actualización:** 2026-06-17
-> **Exact point / Punto exacto:** Versión 2.1.0 (Agent Readiness Integration) finalizada y documentada en walkthrough y changelog.
-> **Pending / Pendiente:** Ejecutar commit y tag en el repositorio local.
-> **Next step / Próximo paso:** Informar al usuario humano del éxito de la release y ofrecer los comandos Git.
+> **Last update / Última actualización:** 2026-06-20
+> **Exact point / Punto exacto:** Construcción y verificación de pruebas completada y aprobada con éxito.
+> **Pending / Pendiente:** Completar la fase `/ship` mediante la creación de `walkthrough.md`, actualización de la versión semántica en el changelog y el commit de git.
+> **Next step / Próximo paso:** Crear walkthrough.md y solicitar selección de versión semántica al usuario.
