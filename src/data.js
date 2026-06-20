@@ -38,7 +38,7 @@ export const TOURISM_DATA = {
             duration: "2 horas",
             price: "89 €",
             rating: 4.7,
-            image: "https://images.unsplash.com/photo-1524338198850-8a2ff63aaca5?auto=format&fit=crop&w=600&q=80"
+            image: "https://images.unsplash.com/photo-1516117172878-fd2c41f4a759?auto=format&fit=crop&w=1200&q=80"
           }
         ],
         restaurants: [
